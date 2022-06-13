@@ -2,24 +2,36 @@ from model.crm import crm
 from view import terminal as view
 
 
+''' itt lent run operation-ben és a feladatleírásban az 1 és 2 menüpont fel van cserélve.
+Melyik szerint csináljuk?'''
+
+
 def list_customers():
     view.print_error_message("Not implemented yet.")
+#  Once the CRM module is selected, choosing option 2 prints all the customers.
 
 
 def add_customer():
     view.print_error_message("Not implemented yet.")
+#  option 1 asks the user to type the name, email, and subscription status for a new customer.
+# When the last field is filled in, a new customer is introduced with an random ID.
 
 
 def update_customer():
     view.print_error_message("Not implemented yet.")
+#  option 3 asks the user for the ID of a customer. If the ID belongs to an existing customer, the user enters new values for the name, email, and subscription status.
+# When the last field is filled in, the customer fields are updated with the given values.
 
 
 def delete_customer():
     view.print_error_message("Not implemented yet.")
+#  option 4 asks the user for the ID of a customer.
+# If the ID belongs to an existing customer, the customer is deleted from the database.
 
 
 def get_subscribed_emails():
     view.print_error_message("Not implemented yet.")
+#  Get the emails of subscribed customers.
 
 
 def run_operation(option):
@@ -59,7 +71,8 @@ def menu():
         except KeyError as err:
             view.print_error_message(err)
 
-#test
+# test
+
 
 if __name__ == '__main__':
     print(42)
