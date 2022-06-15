@@ -3,7 +3,7 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_error_message("Not implemented yet.")
+    view.print_table(sales.get_data_from_file())
 
 
 def add_transaction():
