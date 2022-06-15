@@ -1,18 +1,20 @@
 from model.crm import crm
 from view import terminal as view
 
+# a view-t csak a controller hívja meg, azzal amit a model return-öl
+#pl view.print_table(amit a modell returnol és a controller hívja meg)
 
 ''' itt lent run operation-ben és a feladatleírásban az 1 és 2 menüpont fel van cserélve.
-Melyik szerint csináljuk?'''
+Melyik szerint csináljuk? -> a fileban lévőt használjuk. '''
 
 
-def list_customers():
-    view.print_error_message("Not implemented yet.")
-#  Once the CRM module is selected, choosing option 2 prints all the customers.
+def list_customers(data):
+    crm.list_customers()
+    view.print_table(data)
 
 
 def add_customer():
-    view.print_error_message("Not implemented yet.")
+    pass
 #  option 1 asks the user to type the name, email, and subscription status for a new customer.
 # When the last field is filled in, a new customer is introduced with an random ID.
 
@@ -66,13 +68,11 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("select an operation")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
 
-# test
-
 
 if __name__ == '__main__':
-    print(42)
+    main()
