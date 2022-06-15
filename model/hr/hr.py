@@ -12,7 +12,7 @@ from datetime import datetime
 from model import data_manager, util
 
 DATAFILE = "model/hr/hr.csv"
-HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
+HEADERS = ["ID", "NAME", "DATE OF BIRTH", "DEPARTMENT", "CLEARANCE"]
 
 
 list_of_employee = data_manager.read_table_from_file(DATAFILE)

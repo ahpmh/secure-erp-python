@@ -16,7 +16,7 @@ def list_customers():
 def add_customer():
     new_cust = crm.add_customer()
     view.print_table(new_cust)
-    
+
 #  option 1 asks the user to type the name, email, and subscription status for a new customer.
 # When the last field is filled in, a new customer is introduced with an random ID.
 

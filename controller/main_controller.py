@@ -1,8 +1,16 @@
 from view import terminal as view
 from controller import crm_controller, sales_controller, hr_controller
+import os
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def load_module(option):
+    clear()
+    print("\n\n")
+    print("You have chosen the following module from main menu:")
     if option == 1:
         crm_controller.menu()
     elif option == 2:
@@ -16,6 +24,7 @@ def load_module(option):
 
 
 def display_menu():
+    clear()
     options = ["Exit program",
                "Customer Relationship Management (CRM)",
                "Sales",
@@ -28,6 +37,7 @@ def menu():
     while option != '0':
         display_menu()
         try:
+            #print("\n\n")
             option = view.get_input("select module")                # label
             load_module(int(option))
         except KeyError:

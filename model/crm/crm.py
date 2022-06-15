@@ -30,7 +30,6 @@ def add_customer():
     data.insert(0, new_ID)
     return new_cust
 
-
 def update_customer():
     # data = data_manager.read_table_from_file(DATAFILE)
     # cust = input("Please type the email of the customer you would like to update: ")
@@ -39,10 +38,9 @@ def update_customer():
     #     data_manager.write_table_to_file(data, cust)
     # else:
     #     print("This email cannot be found in our database, please use Add customer!")
-    # return
+    # return 
     # if in database update, else ez a felhasználó nincs az adatbázisban kívanod hozzáadni? add_customer
     pass
-
 
 def delete_customer():
     # data = data_manager.read_table_from_file(DATAFILE)
