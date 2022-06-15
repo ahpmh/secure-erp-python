@@ -2,7 +2,7 @@ from view import terminal as view
 from controller import crm_controller, sales_controller, hr_controller
 
 
-def load_module(option):
+def load_module(option, inp):
     if option == 1:
         crm_controller.menu()
     elif option == 2:
@@ -23,13 +23,13 @@ def display_menu():
     view.print_menu("Main menu", options)
 
 
-def menu():
+def menu(inp):
     option = None
     while option != '0':
         display_menu()
         try:
             option = view.get_input("Select module")
-            load_module(int(option))
+            load_module(int(inp))
         except KeyError:
             view.print_error_message("There is no such option!")
         except ValueError:

@@ -8,9 +8,6 @@ def list_employees():
     view.print_error_message("Not implemented yet.")
 
 
-list_employees()
-
-
 def add_employee():
     view.print_error_message("Not implemented yet.")
 
