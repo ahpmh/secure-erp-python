@@ -1,9 +1,17 @@
 def print_menu(title, list_options):
+    print(title.center(100))
+    print()
+    counter = 0
+    for option in list_options:
+        print(str(counter).rjust(51), option)
+        counter += 1
     '''Args:
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)'''
-#     print(menu)
-
+print_menu("Main menu", ["Exit program",
+               "Customer Relationship Management (CRM)",
+               "Sales",
+               "Human Resources"])
 
 def print_message(message):
     '''Args:
@@ -35,6 +43,8 @@ def print_table(table):
         row = " | ".join(element.center(column_width + 2) for element in row)
         print(row)
     print((len(table[0])*(column_width + 5)) * '-')
+
+
 
 """Prints tabular data like above.
 
