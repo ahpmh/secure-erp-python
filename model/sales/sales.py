@@ -33,7 +33,15 @@ def add_transaction():
     custumer_id = get_id()
     product = input("Please type the product name: ")
     date_time = input('Please type the transaction date (YYYY-MM-DD): ' )
-    price = float(input('Please type the price: '))
+    price = input('Please type the price: ')
 
-    
+    new_transaction.append(id)
+    new_transaction.append(custumer_id)
+    new_transaction.append(product)
+    new_transaction.append(price)
+    new_transaction.append(date_time)
+
+    data.append(new_transaction)
+
+    write_to_file(data)
 

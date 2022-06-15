@@ -3,14 +3,11 @@ from view import terminal as view
 
 
 def list_transactions():
-#    view.print_table(sales.get_data_from_file())
-    data = sales.list_transactions()
-    view.print_table(data)
+    view.print_table(sales.get_data_from_file())
 
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
-
+    sales.add_transaction()
 
 def update_transaction():
     view.print_error_message("Not implemented yet.")
