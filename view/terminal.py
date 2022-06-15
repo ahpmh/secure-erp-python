@@ -6,6 +6,7 @@ def clear():
 
 
 def print_menu(title, list_options):
+    title = title.upper()
     print(title.center(100))
     print()
     counter = 0
@@ -63,7 +64,7 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    inp = int(input(f"Please enter {label} :\n"))
+    inp = int(input(f"Please {label} :\n"))
     return inp
 
 
@@ -73,7 +74,7 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    inps = input(f"Please enter {labels} :\n")
+    inps = input(f"Please {labels} :\n")
     return inps
 
 
