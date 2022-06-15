@@ -8,8 +8,7 @@ def clear():
 
 
 def load_module(option):
-    clear()
-    print("\n\n")
+    print()
     print("You have chosen the following module from main menu:")
     if option == 1:
         crm_controller.menu()
@@ -24,7 +23,6 @@ def load_module(option):
 
 
 def display_menu():
-    clear()
     options = ["Exit program",
                "Customer Relationship Management (CRM)",
                "Sales",
@@ -37,7 +35,6 @@ def menu():
     while option != '0':
         display_menu()
         try:
-            #print("\n\n")
             option = view.get_input("select module")                # label
             load_module(int(option))
         except KeyError:

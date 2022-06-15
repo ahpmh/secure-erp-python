@@ -14,23 +14,13 @@ def print_menu(title, list_options):
     for option in list_options:
         print(str(counter).rjust(50), option)
         counter += 1
-    '''Args:
-        title (str): the title of the menu (first row)
-        list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)'''
+
 
 def print_message(message):
-    '''Args:
-        message: str - the message'''
     print(message)
 
 
 def print_general_results(result, label):
-    """Prints out any type of non-tabular data.
-    It should print numbers (like "@label: @value", floats with 2 digits after the decimal),
-    lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
-    (like "@label \n  @key1: @value1; @key2: @value2")
-    """
-
     if isinstance(result, (int) ):
         print(f'{label}: {result}')
     elif isinstance(result, (float)):
@@ -77,19 +67,18 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    nl = '\n\n'
-    inp = int(input(f"{nl}Please {label} : "))
+
+    inp = input(f"{label}: ")
     return inp
 
 
 def get_inputs(labels):
-    """Gets a list of string inputs from the user.
+    new_data = []
+    for label in labels:
+        get_lable = input(label + ': ')
+        new_data.append(get_lable)
+    return new_data
 
-    Args:
-        labels: list - the list of the labels to be displayed before each prompt
-    """
-    inps = input(f"Please {labels} :\n")
-    return inps
 
 
 def print_error_message(message):

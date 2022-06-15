@@ -23,25 +23,34 @@ def list_customers():
     return data
 
 
-def add_customer():
+def add_customer(new_info):
     data = data_manager.read_table_from_file(DATAFILE)
-    
+    new_id = util.generate_id()
+    new_info.insert(0, new_id)
+    new_data = data + [new_info]
+    data_manager.write_table_to_file(DATAFILE, new_data)
+    return new_data
+
     '''new_cust = data.append
     new_ID = util.generate_id()
     data.insert(0, new_ID)
     return new_cust'''
 
-def update_customer():
-    # data = data_manager.read_table_from_file(DATAFILE)
-    # cust = input("Please type the email of the customer you would like to update: ")
-    # if cust not in data:
+def update_customer(id_input, new_infos):
+    datas = data_manager.read_table_from_file(DATAFILE)
+    nemtom = [data[0] for data in datas]
+    updated_data = []
+    if id_input in nemtom:
+        for data in datas:
+            if data[0] == id_input:
+                new_infos.insert(0, data[0])
+                data = new_infos
+            updated_data.append(data)
+    else:
+        print('There are no customer with that ID.')
+    data_manager.write_table_to_file(DATAFILE, updated_data)
+    return updated_data
 
-    #     data_manager.write_table_to_file(data, cust)
-    # else:
-    #     print("This email cannot be found in our database, please use Add customer!")
-    # return 
-    # if in database update, else ez a felhasználó nincs az adatbázisban kívanod hozzáadni? add_customer
-    pass
 
 def delete_customer():
     # data = data_manager.read_table_from_file(DATAFILE)

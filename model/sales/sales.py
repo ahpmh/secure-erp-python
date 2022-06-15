@@ -48,3 +48,12 @@ def add_transaction():
     data.append(new_transaction)
 
     write_to_file(data)
+
+def get_biggest_revenue_transaction():
+    data = get_data_from_file()
+    data.pop(0)
+    biggest_transaction = data[0]
+    for transaction in data:
+        if float(transaction[3]) > float(biggest_transaction[3]):
+            biggest_transaction = transaction
+    return biggest_transaction

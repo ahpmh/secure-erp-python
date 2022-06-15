@@ -14,17 +14,21 @@ def list_customers():
 
 
 def add_customer():
-    new_cust = crm.add_customer()
-    view.print_table(new_cust)
-
-#  option 1 asks the user to type the name, email, and subscription status for a new customer.
-# When the last field is filled in, a new customer is introduced with an random ID.
+    headers = crm.HEADERS[1:]
+    new_infos = view.get_inputs(headers)
+    added_customer = crm.add_customer(new_infos)
+    view.print_table(added_customer)
+    
 
 
 def update_customer():
-    labels = crm.update_customer()
-    view.get_inputs(labels)
-# When the last field is filled in, the customer fields are updated with the given values.
+    header_for_id = crm.HEADERS[:1]
+    headers_without_id = crm.HEADERS[1:]
+    id_form_user = view.get_input(''.join(header_for_id))
+    new_infos = view.get_inputs(headers_without_id)
+    updated_data = crm.update_customer(id_form_user, new_infos)
+    view.print_table(updated_data)
+
 
 
 def delete_customer():
@@ -74,6 +78,7 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
 
 if __name__ == '__main__':
     main()
