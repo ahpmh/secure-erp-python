@@ -8,8 +8,8 @@ def list_employees():
 
 
 def add_employee():
-    add = hr.add_employee(new_employee)
     view.get_input()
+    hr.add_employee()
 
 
 def update_employee():
@@ -84,7 +84,7 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("select an operation")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)

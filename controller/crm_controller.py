@@ -2,26 +2,28 @@ from model.crm import crm
 from view import terminal as view
 
 # a view-t csak a controller hívja meg, azzal amit a model return-öl
-#pl view.print_table(amit a modell returnol és a controller hívja meg)
+# pl view.print_table(amit a modell returnol és a controller hívja meg)
 
 ''' itt lent run operation-ben és a feladatleírásban az 1 és 2 menüpont fel van cserélve.
 Melyik szerint csináljuk? -> a fileban lévőt használjuk. '''
 
 
-def list_customers(data):
-    crm.list_customers()
+def list_customers():
+    data = crm.list_customers()
     view.print_table(data)
 
 
 def add_customer():
-    pass
+    new_cust = crm.add_customer()
+    view.print_table(new_cust)
+
 #  option 1 asks the user to type the name, email, and subscription status for a new customer.
 # When the last field is filled in, a new customer is introduced with an random ID.
 
 
 def update_customer():
-    view.print_error_message("Not implemented yet.")
-#  option 3 asks the user for the ID of a customer. If the ID belongs to an existing customer, the user enters new values for the name, email, and subscription status.
+    labels = crm.update_customer()
+    view.get_inputs(labels)
 # When the last field is filled in, the customer fields are updated with the given values.
 
 

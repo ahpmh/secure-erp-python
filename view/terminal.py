@@ -1,9 +1,18 @@
+import os
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def print_menu(title, list_options):
-    print(title.center(100))
+    title = title.upper()
+    print("\n\n")
+    print(title.center(95))
     print()
     counter = 0
     for option in list_options:
-        print(str(counter).rjust(51), option)
+        print(str(counter).rjust(50), option)
         counter += 1
     '''Args:
         title (str): the title of the menu (first row)
@@ -34,12 +43,12 @@ def print_general_results(result, label):
 def print_table(table):
     length_list = [len(element) for row in table for element in row]
     column_width = max(length_list)
+    final_printTable = (len(table[0])*(column_width + 5)) * '-'
     for row in table:
-        print((len(table[0])*(column_width + 5)) * '-')
+        print(final_printTable.rjust(100))
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row)
-    print((len(table[0])*(column_width + 5)) * '-')
-
+        print(row.rjust(100))
+    print(final_printTable.rjust(100))
 
 
 """Prints tabular data like above.
@@ -55,7 +64,8 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    inp = int(input(f"Please enter {label} :\n"))
+    nl = '\n\n'
+    inp = int(input(f"{nl}Please {label} : "))
     return inp
 
 
@@ -65,7 +75,7 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    inps = input(f"Please enter {labels} :\n")
+    inps = input(f"Please {labels} :\n")
     return inps
 
 
