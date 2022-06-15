@@ -25,10 +25,11 @@ def list_customers():
 
 def add_customer():
     data = data_manager.read_table_from_file(DATAFILE)
-    new_cust = data.append
+    
+    '''new_cust = data.append
     new_ID = util.generate_id()
     data.insert(0, new_ID)
-    return new_cust
+    return new_cust'''
 
 def update_customer():
     # data = data_manager.read_table_from_file(DATAFILE)

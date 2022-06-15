@@ -30,7 +30,20 @@ def print_general_results(result, label):
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+
+    if isinstance(result, (int) ):
+        print(f'{label}: {result}')
+    elif isinstance(result, (float)):
+        two_decimal_float = round(result, 2)
+        print(f'{label}: {two_decimal_float}')
+    elif isinstance(result, (list, tuple)):
+        print(f'{label}')
+        for item in result:
+            print(item, end='; ')
+    elif isinstance(result, (dict)):
+        print(f'{label}')
+        for key, value in result.items():
+            print(f'{key}; {value}', end='; ')
 
 
 # /--------------------------------\
@@ -43,12 +56,12 @@ def print_general_results(result, label):
 def print_table(table):
     length_list = [len(element) for row in table for element in row]
     column_width = max(length_list)
-    final_printTable = (len(table[0])*(column_width + 5)) * '-'
+    separator_between_rows = (len(table[0])*(column_width + 5)) * '-'
     for row in table:
-        print(final_printTable.rjust(100))
+        print(separator_between_rows.rjust(100))
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row.rjust(100))
-    print(final_printTable.rjust(100))
+        print(row.rjust(98))
+    print(separator_between_rows.rjust(100))
 
 
 """Prints tabular data like above.

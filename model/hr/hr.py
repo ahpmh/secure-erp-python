@@ -16,6 +16,7 @@ HEADERS = ["ID", "NAME", "DATE OF BIRTH", "DEPARTMENT", "CLEARANCE"]
 
 
 list_of_employee = data_manager.read_table_from_file(DATAFILE)
+print(DATAFILE)
 
 
 def add_employee(new_employee):

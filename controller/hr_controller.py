@@ -8,8 +8,8 @@ def list_employees():
 
 
 def add_employee():
-    view.get_input()
-    hr.add_employee()
+    new_info = view.get_input('Please write the name of the new employe')
+    hr.add_employee(new_info)
 
 
 def update_employee():

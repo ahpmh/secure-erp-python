@@ -75,6 +75,5 @@ def menu():
         except KeyError as err:
             view.print_error_message(err)
 
-
 if __name__ == '__main__':
     main()
