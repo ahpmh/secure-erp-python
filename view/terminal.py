@@ -1,8 +1,20 @@
+import os
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def print_menu(title, list_options):
+    print(title.center(100))
+    print()
+    counter = 0
+    for option in list_options:
+        print(str(counter).rjust(51), option)
+        counter += 1
     '''Args:
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)'''
-#     print(menu)
 
 
 def print_message(message):
@@ -36,11 +48,8 @@ def print_table(table):
         print(row)
     print((len(table[0])*(column_width + 5)) * '-')
 
-    '''for i in table:
-        for j in i:'''
 
 
-#  print_table([['Id', 'Name', 'Date of birth', 'Department', 'Clearance'], ['Jz6J5&jw<r', 'Alice', '2000-01-01', 'Sales', '3'], ['45+ohJm&dB', 'Bob', '1989-10-13', 'Production', '6'], ['ßl0W_tbm5Z', 'Cecil', '1993-04-04', 'Sales', '5']])
 """Prints tabular data like above.
 
     Args:

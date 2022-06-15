@@ -3,7 +3,9 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_table(sales.get_data_from_file())
+#    view.print_table(sales.get_data_from_file())
+    data = sales.list_transactions()
+    view.print_table(data)
 
 
 def add_transaction():
