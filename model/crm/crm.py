@@ -23,6 +23,7 @@ HEADERS = ["id", "name", "email", "subscribed"]
 
 def list_customers():
     data = data_manager.read_table_from_file(DATAFILE)
+    data.insert(0, HEADERS)
     return data
 
 

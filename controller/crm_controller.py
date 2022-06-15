@@ -8,8 +8,8 @@ from view import terminal as view
 Melyik szerint csináljuk? -> a fileban lévőt használjuk. '''
 
 
-def list_customers(data):
-    crm.list_customers()
+def list_customers():
+    data = crm.list_customers()
     view.print_table(data)
 
 

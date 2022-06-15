@@ -13,3 +13,8 @@ from model import data_manager, util
 DATAFILE = "model/sales/sales.csv"
 HEADERS = ["Id", "Customer", "Product", "Price", "Date"]
 
+
+def list_transactions():
+    data = data_manager.read_table_from_file(DATAFILE)
+    data.insert(0, HEADERS)
+    return data
