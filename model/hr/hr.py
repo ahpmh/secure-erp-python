@@ -14,6 +14,7 @@ from model import data_manager, util
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
 
+
 list_of_employee = data_manager.read_table_from_file(DATAFILE)
 
 def add_employee(new_employee):
@@ -51,8 +52,8 @@ def oldest_youngest_employee():
     return f'The oldest employee is {oldest_employee} ({oldest_emplyee_age}) and \
 the youngest is {youngest_employee} ({youngest_emplyee_age}).'
 
+
 def list_employes():
     data = data_manager.read_table_from_file(DATAFILE)
     data.insert(0, HEADERS)
     return data
-

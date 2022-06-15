@@ -1,29 +1,14 @@
-from wsgiref import headers
-
-
 def print_menu(title, list_options):
-    """Prints options in standard menu format like this:
-
-    Main menu:
-    (1) Store manager
-    (2) Human resources manager
-    (3) Inventory manager
-    (0) Exit program
-
-    Args:
+    '''Args:
         title (str): the title of the menu (first row)
-        list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
-    """
-    pass
+        list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)'''
+#     print(menu)
 
 
 def print_message(message):
-    """Prints a single message to the terminal.
-
-    Args:
-        message: str - the message
-    """
-    pass
+    '''Args:
+        message: str - the message'''
+    print(message)
 
 
 def print_general_results(result, label):
@@ -53,16 +38,9 @@ def print_table(table):
 
     '''for i in table:
         for j in i:'''
-            
-        
 
 
-    
-
-    
-
-print_table([['Id', 'Name', 'Date of birth', 'Department', 'Clearance'], ['Jz6J5&jw<r', 'Alice', '2000-01-01', 'Sales', '3'], ['45+ohJm&dB', 'Bob', '1989-10-13', 'Production', '6'], ['ßl0W_tbm5Z', 'Cecil', '1993-04-04', 'Sales', '5']])
-        
+#  print_table([['Id', 'Name', 'Date of birth', 'Department', 'Clearance'], ['Jz6J5&jw<r', 'Alice', '2000-01-01', 'Sales', '3'], ['45+ohJm&dB', 'Bob', '1989-10-13', 'Production', '6'], ['ßl0W_tbm5Z', 'Cecil', '1993-04-04', 'Sales', '5']])
 """Prints tabular data like above.
 
     Args:
@@ -76,7 +54,8 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    pass
+    inp = int(input(f"Please enter {label} :\n"))
+    return inp
 
 
 def get_inputs(labels):
@@ -85,7 +64,8 @@ def get_inputs(labels):
     Args:
         labels: list - the list of the labels to be displayed before each prompt
     """
-    pass
+    inps = input(f"Please enter {labels} :\n")
+    return inps
 
 
 def print_error_message(message):
@@ -94,4 +74,4 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
+    print(f"Error:{ message}")
