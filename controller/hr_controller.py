@@ -6,7 +6,10 @@ def list_employees():
     data = hr.list_employes()
     view.print_table(data)
     view.print_error_message("Not implemented yet.")
+
+
 list_employees()
+
 
 def add_employee():
     view.print_error_message("Not implemented yet.")
