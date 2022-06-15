@@ -8,10 +8,6 @@ def print_menu(title, list_options):
     '''Args:
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)'''
-print_menu("Main menu", ["Exit program",
-               "Customer Relationship Management (CRM)",
-               "Sales",
-               "Human Resources"])
 
 def print_message(message):
     '''Args:

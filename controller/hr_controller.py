@@ -5,14 +5,11 @@ from view import terminal as view
 def list_employees():
     data = hr.list_employes()
     view.print_table(data)
-    view.print_error_message("Not implemented yet.")
-
-
-list_employees()
 
 
 def add_employee():
-    view.print_error_message("Not implemented yet.")
+    add = hr.add_employee(new_employee)
+    view.get_input()
 
 
 def update_employee():

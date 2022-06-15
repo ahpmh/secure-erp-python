@@ -57,7 +57,3 @@ def list_employes():
     data = data_manager.read_table_from_file(DATAFILE)
     data.insert(0, HEADERS)
     return data
-<<<<<<< HEAD
-
-=======
->>>>>>> c331ae7af73e7244ed2237441563fac9dc7e0682
