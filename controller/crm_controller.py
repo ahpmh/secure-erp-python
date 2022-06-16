@@ -18,8 +18,8 @@ def add_customer():
     new_infos = view.get_inputs(headers)
     crm.add_customer(new_infos)
     view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
-    
 
+    
 
 def update_customer():
     datas = crm.data_manager.read_table_from_file(crm.DATAFILE)
