@@ -21,34 +21,36 @@ def get_data_from_file():
     return data
 
 
-def write_to_file(plus_data):
-    plus_data.pop(0)
-    data_manager.write_table_to_file(DATAFILE, plus_data)
+def add_tranzaction(new_info):
+    data = data_manager.read_table_from_file(DATAFILE)
+    new_id = util.generate_id()
+    new_info.insert(0, new_id)
+    new_data = data + [new_info]
+    data_manager.write_table_to_file(DATAFILE, new_data)
 
 
-def get_id():
-    id = util.generate_id()
-    return id
+def updating_employee(id_input, new_infos):
+    datas = data_manager.read_table_from_file(DATAFILE)
+    updated_data = []
+    for data in datas:
+        if data[0] == id_input:
+            new_infos.insert(0, data[0])
+            data = new_infos
+        updated_data.append(data)
+    print(updated_data)
+    data_manager.write_table_to_file(DATAFILE, updated_data)
+    return updated_data
 
 
-def add_transaction():
-    data = get_data_from_file()
-    new_transaction = []
-    id = get_id()
-    custumer_id = get_id()
-    product = input("Please type the product name: ")
-    date_time = input('Please type the transaction date (YYYY-MM-DD): ')
-    price = input('Please type the price: ')
+def delete_transaction(id_input):
+    datas = data_manager.read_table_from_file(DATAFILE)
+    counter = 0
+    for data in datas:
+        if data[0] == id_input:
+            datas.pop(counter)
+        counter += 1
+    data_manager.write_table_to_file(DATAFILE, datas)
 
-    new_transaction.append(id)
-    new_transaction.append(custumer_id)
-    new_transaction.append(product)
-    new_transaction.append(price)
-    new_transaction.append(date_time)
-
-    data.append(new_transaction)
-
-    write_to_file(data)
 
 def get_biggest_revenue_transaction():
     data = get_data_from_file()
@@ -58,6 +60,7 @@ def get_biggest_revenue_transaction():
         if float(transaction[3]) > float(biggest_transaction[3]):
             biggest_transaction = transaction
     return biggest_transaction
+
 
 def get_biggest_revenue_product():
     data = get_data_from_file()
@@ -74,6 +77,7 @@ def get_biggest_revenue_product():
             biggest_revenue = (produce_name, produce_price)
     return biggest_revenue
 
+
 def count_transactions_between(from_date, to_date):
     data = get_data_from_file()
     data.pop(0)
@@ -82,9 +86,19 @@ def count_transactions_between(from_date, to_date):
         transaction_date = datetime.date.fromisoformat(element[4])
         if from_date < transaction_date < to_date:
             counter += 1
+        elif to_date < transaction_date < from_date:
+            counter += 1
     return counter
 
 
-
-        
-
+def sum_transactions_between(from_date, to_date):
+    data = get_data_from_file()
+    data.pop(0)
+    sum_price_between_two_dates = 0
+    for element in data:
+        transaction_date = datetime.date.fromisoformat(element[4])
+        if from_date < transaction_date < to_date:
+            sum_price_between_two_dates += float(element[3])
+        elif to_date < transaction_date < from_date:
+            sum_price_between_two_dates += float(element[3])
+    return sum_price_between_two_dates

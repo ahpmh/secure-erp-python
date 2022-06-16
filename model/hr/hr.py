@@ -10,8 +10,6 @@ HEADERS = ["ID", "NAME", "DATE OF BIRTH", "DEPARTMENT", "CLEARANCE"]
 list_of_employee = data_manager.read_table_from_file(DATAFILE)
 
 
-
-
 def add_employee(new_employee):
     data = data_manager.read_table_from_file(DATAFILE)
     new_id = util.generate_id()
@@ -40,17 +38,17 @@ def delete_employee(id_input):
         if data[0] == id_input:
             datas.pop(counter)
         counter += 1
-    data_manager.write_table_to_file(DATAFILE,datas)
-
+    data_manager.write_table_to_file(DATAFILE, datas)
 
 
 def oldest_youngest_employee():
     date_of_birth = {}
-    list_of_employees = data_manager.read_table_from_file(DATAFILE, separator=';')
-    
+    list_of_employees = data_manager.read_table_from_file(
+        DATAFILE, separator=';')
+
     for employee in list_of_employees:
         date_of_birth[employee[1]] = datetime.strptime(employee[2], '%Y-%m-%d')
-    
+
     today = datetime.today()
     youngest_employee = max(date_of_birth, key=lambda k: date_of_birth[k])
     oldest_employee = min(date_of_birth, key=lambda k: date_of_birth[k])

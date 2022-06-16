@@ -8,7 +8,8 @@ def clear():
 
 
 def load_module(option):
-    print()
+    clear()
+    print("\n\n")
     print("You have chosen the following module from main menu:")
     if option == 1:
         crm_controller.menu()
@@ -17,13 +18,13 @@ def load_module(option):
     elif option == 3:
         hr_controller.menu()
     elif option == 0:
-        return 0
+        return
     else:
         raise KeyError()
 
 
 def display_menu():
-    options = ["Exit program",
+    options = ["For Exit the program type: 00",
                "Customer Relationship Management (CRM)",
                "Sales",
                "Human Resources"]
@@ -32,15 +33,17 @@ def display_menu():
 
 def menu():
     option = None
-    while option != '0':
+    while option != '00':
         display_menu()
         try:
-            option = view.get_input("select module")                # label
+            clear
+            print("\n\n")
+            option = view.get_input("\nPlease select module number or 00 for quit:\n")                # label
             load_module(int(option))
         except KeyError:
             view.print_error_message("There is no such option!")    # error msg
         except ValueError:
-            view.print_error_message("Please enter a number!")      # error msg
-        if option == 0:
-            view.print_message("Good-bye!")                                 # msg
-            return
+            view.print_error_message("Please enter a number from the menu points!")      # error msg
+    if option == '00':
+        view.print_message("Exit the program\n                         ""\033[93m""----""\033[0m""\033[1m"" Good-bye!""\033[0m""\033[93m"" ----""\033[0m\n")
+        exit()

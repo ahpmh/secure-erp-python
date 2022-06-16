@@ -19,7 +19,6 @@ HEADERS = ["ID", "NAME", "EMAIL", "SUBSCRIBED"]
 
 def list_customers():
     data = data_manager.read_table_from_file(DATAFILE)
-    print(data)
     data.insert(0, HEADERS)
     return data
 
@@ -40,26 +39,26 @@ def update_customer(id_input, new_infos):
             new_infos.insert(0, data[0])
             data = new_infos
         updated_data.append(data)
-    print(updated_data)
     data_manager.write_table_to_file(DATAFILE, updated_data)
-    return updated_data
 
 
 def delete_customer(id_input):
     datas = data_manager.read_table_from_file(DATAFILE)
+    counter = 0
     for data in datas:
         if data[0] == id_input:
-            del data
-        print(data)
-    data_manager.write_table_to_file(DATAFILE)
-
-
-#delete_customer('t66!p_ZAfk')
-        
+            datas.pop(counter)
+        counter += 1
+    data_manager.write_table_to_file(DATAFILE, datas)
 
 
 def get_subscribed_emails():
-    # data = data_manager.read_table_from_file(DATAFILE)
-    # #  if 1, else
-    # view.print_general_results(result, label)
-    pass
+    data = data_manager.read_table_from_file(DATAFILE)
+    subscribedMail = []
+    for element_of_subscribed_mails in data:
+        if element_of_subscribed_mails[-1] == "1":
+            # element_of_subscribed_mails[-2] = str(element_of_subscribed_mails[-2]).rstrip(";")
+            subscribedMail.append(element_of_subscribed_mails[-2])
+            if subscribedMail == []:
+                print(" ------ There is no subscribed customer ------ ")
+    return subscribedMail

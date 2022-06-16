@@ -1,15 +1,12 @@
-import os
-
-
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
 def print_menu(title, list_options):
     title = title.upper()
+    bold = "\033[1m"
+    yellow = '\033[93m'
+    end = '\033[0m'
+    title = bold + title.upper() + end
     print("\n\n")
-    print(title.center(95))
-    print()
+    print(yellow, title.center(100), end)
+    print("\n\n")
     counter = 0
     for option in list_options:
         print(str(counter).rjust(50), option)
@@ -21,7 +18,7 @@ def print_message(message):
 
 
 def print_general_results(result, label):
-    if isinstance(result, (int) ):
+    if isinstance(result, (int)):
         print(f'{label}: {result}')
     elif isinstance(result, (float)):
         two_decimal_float = round(result, 2)
@@ -50,7 +47,7 @@ def print_table(table):
     for row in table:
         print(separator_between_rows.rjust(100))
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row.rjust(98))
+        print(row.rjust(100))
     print(separator_between_rows.rjust(100))
 
 
@@ -67,8 +64,7 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-
-    inp = input(f"{label}: ")
+    inp = input(f"{label}")
     return inp
 
 
@@ -80,11 +76,10 @@ def get_inputs(labels):
     return new_data
 
 
-
 def print_error_message(message):
     """Prints an error message to the terminal.
 
     Args:
         message: str - the error message
     """
-    print(f"Error:{ message}")
+    print(f"{message}")
