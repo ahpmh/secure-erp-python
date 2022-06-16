@@ -4,16 +4,17 @@ from view import terminal as view
 
 
 def list_employees():
-    data = hr.list_of_employees()
-    view.print_table(data, hr.HEADERS)
+    data = hr.list_employes()
+    view.print_table(data)
 
 
 def add_employee():
-
-    view.print_error_message("Not implemented yet.")
+    new_info = view.get_input('Please write the name of the new employe')
+    hr.add_employee(new_info)
 
 
 def update_employee():
+    view.print_menu()
     view.print_error_message("Not implemented yet.")
 
 
@@ -85,7 +86,7 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("select an operation")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)

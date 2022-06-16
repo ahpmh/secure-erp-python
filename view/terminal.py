@@ -1,23 +1,39 @@
+import os
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def print_menu(title, list_options):
-    '''Args:
-        title (str): the title of the menu (first row)
-        list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)'''
-#     print(menu)
+    title = title.upper()
+    print("\n\n")
+    print(title.center(95))
+    print()
+    counter = 0
+    for option in list_options:
+        print(str(counter).rjust(50), option)
+        counter += 1
 
 
 def print_message(message):
-    '''Args:
-        message: str - the message'''
     print(message)
 
 
 def print_general_results(result, label):
-    """Prints out any type of non-tabular data.
-    It should print numbers (like "@label: @value", floats with 2 digits after the decimal),
-    lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
-    (like "@label \n  @key1: @value1; @key2: @value2")
-    """
-    pass
+    if isinstance(result, (int) ):
+        print(f'{label}: {result}')
+    elif isinstance(result, (float)):
+        two_decimal_float = round(result, 2)
+        print(f'{label}: {two_decimal_float}')
+    elif isinstance(result, (list, tuple)):
+        print(f'{label}')
+        for item in result:
+            print(item, end='; ')
+    elif isinstance(result, (dict)):
+        print(f'{label}')
+        for key, value in result.items():
+            print(f'{key}; {value}', end='; ')
 
 
 # /--------------------------------\
@@ -30,17 +46,14 @@ def print_general_results(result, label):
 def print_table(table):
     length_list = [len(element) for row in table for element in row]
     column_width = max(length_list)
+    separator_between_rows = (len(table[0])*(column_width + 5)) * '-'
     for row in table:
-        print((len(table[0])*(column_width + 5)) * '-')
+        print(separator_between_rows.rjust(100))
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row)
-    print((len(table[0])*(column_width + 5)) * '-')
-
-    '''for i in table:
-        for j in i:'''
+        print(row.rjust(98))
+    print(separator_between_rows.rjust(100))
 
 
-#  print_table([['Id', 'Name', 'Date of birth', 'Department', 'Clearance'], ['Jz6J5&jw<r', 'Alice', '2000-01-01', 'Sales', '3'], ['45+ohJm&dB', 'Bob', '1989-10-13', 'Production', '6'], ['ßl0W_tbm5Z', 'Cecil', '1993-04-04', 'Sales', '5']])
 """Prints tabular data like above.
 
     Args:
@@ -54,18 +67,18 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    inp = int(input(f"Please enter {label} :\n"))
+
+    inp = input(f"{label}: ")
     return inp
 
 
 def get_inputs(labels):
-    """Gets a list of string inputs from the user.
+    new_data = []
+    for label in labels:
+        get_lable = input(label + ': ')
+        new_data.append(get_lable)
+    return new_data
 
-    Args:
-        labels: list - the list of the labels to be displayed before each prompt
-    """
-    inps = input(f"Please enter {labels} :\n")
-    return inps
 
 
 def print_error_message(message):

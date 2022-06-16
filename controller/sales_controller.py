@@ -3,11 +3,11 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_error_message("Not implemented yet.")
+    view.print_table(sales.get_data_from_file())
 
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
+    sales.add_transaction()
 
 
 def update_transaction():
@@ -19,7 +19,7 @@ def delete_transaction():
 
 
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(sales.get_biggest_revenue_transaction(), 'This is the biggest revenue transaction.')
 
 
 def get_biggest_revenue_product():
@@ -75,7 +75,7 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("Select an operation")
+            operation = view.get_input("select an operation")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
