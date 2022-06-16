@@ -6,7 +6,7 @@ def print_menu(title, list_options):
     title = bold + title.upper() + end
     print("\n\n")
     print(yellow, title.center(100), end)
-    print()
+    print("\n\n")
     counter = 0
     for option in list_options:
         print(str(counter).rjust(50), option)
@@ -45,10 +45,10 @@ def print_table(table):
     column_width = max(length_list)
     separator_between_rows = (len(table[0])*(column_width + 5)) * '-'
     for row in table:
-        print(separator_between_rows)
+        print(separator_between_rows.rjust(100))
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row)
-    print(separator_between_rows)
+        print(row.rjust(100))
+    print(separator_between_rows.rjust(100))
 
 
 """Prints tabular data like above.
@@ -64,7 +64,7 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    inp = input(f"{label}: ")
+    inp = input(f"{label}")
     return inp
 
 
@@ -82,4 +82,4 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    print(f"Error:{ message}")
+    print(f"{message}")

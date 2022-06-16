@@ -22,14 +22,14 @@ def update_employee():
     IDs = [data[0] for data in datas]
     if id_form_user in IDs:
         for data in datas:
-            if data[0] == id_form_user:  
+            if data[0] == id_form_user:
                 new_infos = view.get_inputs(headers_without_id)
                 hr.updating_employee(id_form_user, new_infos)
-                view.print_table(hr.data_manager.read_table_from_file(hr.DATAFILE))
+                view.print_table(
+                    hr.data_manager.read_table_from_file(hr.DATAFILE))
     else:
-        view.print_message('There are no customer with this ID. If you want to add a new customer please select add customer option.')
-
-
+        view.print_message(
+            'There is no customer with this ID. If you want to add a new customer please select add customer option.')
 
 
 def delete_employee():
@@ -103,7 +103,7 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("select an operation")
+            operation = view.get_input("Please select an operation:\n")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)

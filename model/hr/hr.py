@@ -7,7 +7,7 @@ Data table structure:
     - department (string)
     - clearance level (int): from 0 (lowest) to 7 (highest)
 """
-from datetime import date
+# unuse codpart,if runs without it, will be deleted:  from datetime import date
 from datetime import datetime
 from model import data_manager, util
 

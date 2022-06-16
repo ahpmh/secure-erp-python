@@ -1,11 +1,11 @@
 from model.crm import crm
 from view import terminal as view
 
-# a view-t csak a controller hívja meg, azzal amit a model return-öl
-# pl view.print_table(amit a modell returnol és a controller hívja meg)
+'''  a view-t csak a controller hívja meg, azzal amit a model return-öl
+ pl view.print_table(amit a modell returnol és a controller hívja meg)'''
 
-''' itt lent run operation-ben és a feladatleírásban az 1 és 2 menüpont fel van cserélve.
-Melyik szerint csináljuk? -> a fileban lévőt használjuk. '''
+# itt lent run operation-ben és a feladatleírásban az 1 és 2 menüpont fel van cserélve.
+# Melyik szerint csináljuk? -> a fileban lévőt használjuk.
 
 
 def list_customers():
@@ -45,13 +45,10 @@ def delete_customer():
     view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
 
 
-def get_subscribed_emails():
+def get_subscribed_emails():  # Get the emails of subscribed customers.
     empty_row = "\n"
     subscribedMail = crm.get_subscribed_emails()
-    print(subscribedMail)
     view.print_general_results(subscribedMail, f"{empty_row}Email address of subscribed customer(s):{empty_row}")
-
-#  Get the emails of subscribed customers.
 
 
 def run_operation(option):
@@ -86,7 +83,7 @@ def menu():
     while operation != '0':
         display_menu()
         try:
-            operation = view.get_input("select an operation")
+            operation = view.get_input("Please select an operation:\n")
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
