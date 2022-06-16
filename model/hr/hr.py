@@ -19,6 +19,7 @@ list_of_employee = data_manager.read_table_from_file(DATAFILE)
 print(DATAFILE)
 
 
+
 def add_employee(new_employee):
     newID = util.generate_id()
     new_employee.insert(0, newID)
@@ -40,12 +41,11 @@ def delete_employee(employee_to_delete):
 
 def oldest_youngest_employee():
     date_of_birth = {}
-    list_of_employees = data_manager.read_table_from_file(
-        DATAFILE, separator=';')
-
+    list_of_employees = data_manager.read_table_from_file(DATAFILE, separator=';')
+    
     for employee in list_of_employees:
         date_of_birth[employee[1]] = datetime.strptime(employee[2], '%Y-%m-%d')
-
+    
     today = datetime.today()
     youngest_employee = max(date_of_birth, key=lambda k: date_of_birth[k])
     oldest_employee = min(date_of_birth, key=lambda k: date_of_birth[k])
@@ -56,7 +56,28 @@ def oldest_youngest_employee():
 the youngest is {youngest_employee} ({youngest_emplyee_age}).'
 
 
-def list_employes():
+def list_of_employees():
     data = data_manager.read_table_from_file(DATAFILE)
     data.insert(0, HEADERS)
     return data
+
+
+def average_age(birth_date):
+    age = []
+    counter = 0
+    list_of_employees = data_manager.read_table_from_file(DATAFILE, separator=';') 
+    pass
+
+    
+
+
+def birthdays_next():
+    pass
+
+
+def count_employees_clearance_from_input():
+    pass
+
+
+def get_number_of_employees_per_department():
+    pass
