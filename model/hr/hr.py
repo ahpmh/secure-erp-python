@@ -16,27 +16,40 @@ HEADERS = ["ID", "NAME", "DATE OF BIRTH", "DEPARTMENT", "CLEARANCE"]
 
 
 list_of_employee = data_manager.read_table_from_file(DATAFILE)
-print(DATAFILE)
+
 
 
 
 def add_employee(new_employee):
-    newID = util.generate_id()
-    new_employee.insert(0, newID)
-    list_of_employee.append(new_employee)
-    data_manager.write_table_to_file(DATAFILE, list_of_employee)
+    data = data_manager.read_table_from_file(DATAFILE)
+    new_id = util.generate_id()
+    new_employee.insert(0, new_id)
+    new_data = data + [new_employee]
+    data_manager.write_table_to_file(DATAFILE, new_data)
 
 
-def update_employee(employee_nr, updated_employee):
-    newID = util.generate_id()
-    updated_employee.insert(0, newID)
-    list_of_employee[int(employee_nr)] = updated_employee
-    data_manager.write_table_to_file(DATAFILE, list_of_employee)
+def updating_employee(id_input, new_infos):
+    datas = data_manager.read_table_from_file(DATAFILE)
+    updated_data = []
+    for data in datas:
+        if data[0] == id_input:
+            new_infos.insert(0, data[0])
+            data = new_infos
+        updated_data.append(data)
+    print(updated_data)
+    data_manager.write_table_to_file(DATAFILE, updated_data)
+    return updated_data
 
 
-def delete_employee(employee_to_delete):
-    del list_of_employee[int(employee_to_delete)]
-    data_manager.write_table_to_file(DATAFILE, list_of_employee)
+def delete_employee(id_input):
+    datas = data_manager.read_table_from_file(DATAFILE)
+    counter = 0
+    for data in datas:
+        if data[0] == id_input:
+            datas.pop(counter)
+        counter += 1
+    data_manager.write_table_to_file(DATAFILE,datas)
+
 
 
 def oldest_youngest_employee():
@@ -63,11 +76,7 @@ def list_of_employees():
 
 
 def average_age(birth_date):
-    age = []
-    counter = 0
-    list_of_employees = data_manager.read_table_from_file(DATAFILE, separator=';') 
-    pass
-
+    
     
 
 

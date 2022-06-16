@@ -1,4 +1,3 @@
-from model.crm.crm import HEADERS
 from model.hr import hr
 from view import terminal as view
 
@@ -9,17 +8,35 @@ def list_employees():
 
 
 def add_employee():
-    new_info = view.get_input('Please write the name of the new employe')
+    headers = hr.HEADERS[1:]
+    new_info = view.get_inputs(headers)
     hr.add_employee(new_info)
+    view.print_table(hr.data_manager.read_table_from_file(hr.DATAFILE))
 
 
 def update_employee():
-    view.print_menu()
-    view.print_error_message("Not implemented yet.")
+    datas = hr.data_manager.read_table_from_file(hr.DATAFILE)
+    header_for_id = hr.HEADERS[:1]
+    headers_without_id = hr.HEADERS[1:]
+    id_form_user = view.get_input(''.join(header_for_id))
+    IDs = [data[0] for data in datas]
+    if id_form_user in IDs:
+        for data in datas:
+            if data[0] == id_form_user:  
+                new_infos = view.get_inputs(headers_without_id)
+                hr.updating_employee(id_form_user, new_infos)
+                view.print_table(hr.data_manager.read_table_from_file(hr.DATAFILE))
+    else:
+        view.print_message('There are no customer with this ID. If you want to add a new customer please select add customer option.')
+
+
 
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
+    header = hr.HEADERS[:1]
+    user_id = view.get_input(''.join(header))
+    hr.delete_employee(user_id)
+    view.print_table(hr.data_manager.read_table_from_file(hr.DATAFILE))
 
 
 def get_oldest_and_youngest():

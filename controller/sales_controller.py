@@ -1,5 +1,6 @@
 from model.sales import sales
 from view import terminal as view
+import datetime
 
 
 def list_transactions():
@@ -30,7 +31,10 @@ def get_biggest_revenue_product():
 
 
 def count_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    dates = view.get_inputs(['Type the start date', 'Type the end date'])
+    start_date = datetime.date.fromisoformat(dates[0])
+    end_date = datetime.date.fromisoformat(dates[1])
+    view.print_general_results(sales.count_transactions_between(start_date, end_date), 'The number of transactions')
 
 
 def sum_transactions_between():
