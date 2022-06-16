@@ -9,7 +9,7 @@ Data table structure:
 """
 
 from model import data_manager, util
-from datetime import datetime
+import datetime
 
 DATAFILE = "model/sales/sales.csv"
 HEADERS = ["ID", "CUSTOMER", "PRODUCT", "PRICE", "DATE"]
@@ -79,12 +79,12 @@ def count_transactions_between(from_date, to_date):
     data.pop(0)
     counter = 0
     for element in data:
-        transaction_date = datetime.strptime(element[4], 'YYYY-mm-DD')
+        transaction_date = datetime.date.fromisoformat(element[4])
         if from_date < transaction_date < to_date:
             counter += 1
     return counter
 
-    
+
 
         
 
