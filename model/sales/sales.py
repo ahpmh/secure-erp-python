@@ -9,6 +9,7 @@ Data table structure:
 """
 
 from model import data_manager, util
+import datetime
 
 DATAFILE = "model/sales/sales.csv"
 HEADERS = ["ID", "CUSTOMER", "PRODUCT", "PRICE", "DATE"]
@@ -72,3 +73,18 @@ def get_biggest_revenue_product():
         if produce_price > biggest_revenue[1]:
             biggest_revenue = (produce_name, produce_price)
     return biggest_revenue
+
+def count_transactions_between(from_date, to_date):
+    data = get_data_from_file()
+    data.pop(0)
+    counter = 0
+    for element in data:
+        transaction_date = datetime.date.fromisoformat(element[4])
+        if from_date < transaction_date < to_date:
+            counter += 1
+    return counter
+
+
+
+        
+
