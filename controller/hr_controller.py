@@ -4,21 +4,24 @@ from view import terminal as view
 
 
 def list_employees():
-    data = hr.list_employes()
+    data = hr.list_of_employees()
     view.print_table(data)
 
 
 def add_employee():
-    new_info = view.get_input('Please write the name of the new employe')
+    new_info = view.get_input('Please write the name of the new employee: ')
     hr.add_employee(new_info)
 
 
 def update_employee():
-    view.print_menu()
-    view.print_error_message("Not implemented yet.")
+    who_to_update = view.get_input("Please write the employee who you want to update: ")
+    hr.updating_employee(who_to_update)
+
 
 
 def delete_employee():
+    who_to_delete = view.get_input("Please write the employee who you want to delete: ")
+    
     view.print_error_message("Not implemented yet.")
 
 

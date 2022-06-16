@@ -27,7 +27,7 @@ def add_employee(new_employee):
     data_manager.write_table_to_file(DATAFILE, list_of_employee)
 
 
-def update_employee(employee_nr, updated_employee):
+def updating_employee(employee_nr, updated_employee):
     newID = util.generate_id()
     updated_employee.insert(0, newID)
     list_of_employee[int(employee_nr)] = updated_employee
