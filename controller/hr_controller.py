@@ -1,17 +1,15 @@
+from model.crm.crm import HEADERS
 from model.hr import hr
 from view import terminal as view
 
 
 def list_employees():
-    data = hr.list_employes()
-    view.print_table(data)
-    view.print_error_message("Not implemented yet.")
-
-
-list_employees()
+    data = hr.list_of_employees()
+    view.print_table(data, hr.HEADERS)
 
 
 def add_employee():
+
     view.print_error_message("Not implemented yet.")
 
 
