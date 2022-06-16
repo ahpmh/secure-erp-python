@@ -49,13 +49,16 @@ def delete_customer(id_input):
         if data[0] == id_input:
             datas.pop(counter)
         counter += 1
-    data_manager.write_table_to_file(DATAFILE, datas)  
+    data_manager.write_table_to_file(DATAFILE, datas)
 
 
 def get_subscribed_emails():
     data = data_manager.read_table_from_file(DATAFILE)
     subscribedMail = []
-    for i in data:
-        if i[-1] == "1":
-            subscribedMail.append(i[-2])
+    for element_of_subscribed_mails in data:
+        if element_of_subscribed_mails[-1] == "1":
+            element_of_subscribed_mails[-2] = str(element_of_subscribed_mails[-2]).rstrip(";")
+            subscribedMail.append(element_of_subscribed_mails[-2])
+        else:
+            print(" ------ There is no subscribed customer ------ ")
     return subscribedMail

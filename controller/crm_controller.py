@@ -46,10 +46,11 @@ def delete_customer():
 
 
 def get_subscribed_emails():
+    empty_row = "\n"
     subscribedMail = crm.get_subscribed_emails()
     print(subscribedMail)
-    view.print_general_results(subscribedMail, "Subscribed customers are: ")
-    
+    view.print_general_results(subscribedMail, f"{empty_row}Email address of subscribed customer(s):{empty_row}")
+
 #  Get the emails of subscribed customers.
 
 
