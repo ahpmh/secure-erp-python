@@ -40,7 +40,7 @@ def update_customer():
                     crm.data_manager.read_table_from_file(crm.DATAFILE))
     else:
         view.print_message(
-            'There are no customer with this ID. If you want to add a new customer please select add customer option.')
+            'There is no customer for this ID. If you want to add a new customer please select add customer option.')
 
 
 def delete_customer():
