@@ -59,6 +59,7 @@ def get_subscribed_emails():
         if element_of_subscribed_mails[-1] == "1":
             # element_of_subscribed_mails[-2] = str(element_of_subscribed_mails[-2]).rstrip(";")
             subscribedMail.append(element_of_subscribed_mails[-2])
-            if subscribedMail == []:
-                print(" ------ There is no subscribed customer ------ ")
-    return subscribedMail
+    if subscribedMail == []:
+        print(" ------ There is no subscribed customer YET------ ")
+    else:
+        return subscribedMail
