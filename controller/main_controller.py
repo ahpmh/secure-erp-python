@@ -18,7 +18,6 @@ def load_module(option):
     elif option == 3:
         hr_controller.menu()
     elif option == 0:
-        clear()
         return
     else:
         raise KeyError()
@@ -37,16 +36,14 @@ def menu():
     while option != '00':
         display_menu()
         try:
+            clear
             print("\n\n")
-            option = view.get_input(
-                "\nPlease select module number or 00 for quit:\n")                # label
+            option = view.get_input("\nPlease select module number or 00 for quit:\n")                # label
             load_module(int(option))
         except KeyError:
             view.print_error_message("There is no such option!")    # error msg
         except ValueError:
-            view.print_error_message(
-                "Please enter a number from the menu points!")      # error msg
+            view.print_error_message("Please enter a number from the menu points!")      # error msg
     if option == '00':
-        view.print_message(
-            "You have chosen to QUIT from the program. Good-bye!")
+        view.print_message("Exit the program\n                         ""\033[93m""----""\033[0m""\033[1m"" Good-bye!""\033[0m""\033[93m"" ----""\033[0m\n")
         exit()
