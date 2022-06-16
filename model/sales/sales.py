@@ -63,7 +63,12 @@ def count_transactions_between(from_date, to_date):
             counter += 1
     return counter
 
-
-
-        
-
+def sum_transactions_between(from_date, to_date):
+    data = get_data_from_file()
+    data.pop(0)
+    sum_price_between_two_dates = 0
+    for element in data:
+        transaction_date = datetime.date.fromisoformat(element[4])
+        if from_date < transaction_date < to_date:
+            sum_price_between_two_dates += float(element[3])
+    return sum_price_between_two_dates

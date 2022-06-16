@@ -38,7 +38,10 @@ def count_transactions_between():
 
 
 def sum_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    dates = view.get_inputs(['Type the start date', 'Type the end date'])
+    start_date = datetime.date.fromisoformat(dates[0])
+    end_date = datetime.date.fromisoformat(dates[1])
+    view.print_general_results(sales.sum_transactions_between(start_date, end_date), 'The sum of transactions')
 
 
 def run_operation(option):
