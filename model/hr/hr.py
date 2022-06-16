@@ -81,8 +81,13 @@ def birthdays_next():
     pass
 
 
-def count_employees_clearance_from_input():
-    pass
+def count_employees_clearance_from_input(data_from_cust):
+    data = data_manager.read_table_from_file(DATAFILE)
+    counter = 0
+    for element in data:
+        if data_from_cust <= element[4]:
+            counter += 1
+    return counter
 
 
 def get_number_of_employees_per_department():
