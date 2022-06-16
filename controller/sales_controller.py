@@ -27,7 +27,7 @@ def get_biggest_revenue_product():
 
 
 def count_transactions_between():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(sales.count_transactions_between(), 'Number of transactions:')
 
 
 def sum_transactions_between():
