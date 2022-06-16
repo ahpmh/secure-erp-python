@@ -48,10 +48,10 @@ def print_table(table):
     column_width = max(length_list)
     separator_between_rows = (len(table[0])*(column_width + 5)) * '-'
     for row in table:
-        print(separator_between_rows.rjust(100))
+        print(separator_between_rows)
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row.rjust(98))
-    print(separator_between_rows.rjust(100))
+        print(row)
+    print(separator_between_rows)
 
 
 """Prints tabular data like above.

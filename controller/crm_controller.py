@@ -40,9 +40,9 @@ def update_customer():
 
 def delete_customer():
      header = crm.HEADERS[:1]
-     user_id = view. get_input(header)
-     deleted_data = crm.delete_customer(user_id)
-     view.print_table(deleted_data)
+     user_id = view. get_input(''.join(header))
+     crm.delete_customer(user_id)
+     view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
 
 
 def get_subscribed_emails():

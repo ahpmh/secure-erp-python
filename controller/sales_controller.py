@@ -7,7 +7,10 @@ def list_transactions():
 
 
 def add_transaction():
-    sales.add_transaction()
+    headers = sales.HEADERS[1:]
+    new_infos = view.get_inputs(headers)
+    sales.add_tranzaction(new_infos)
+    view.print_table(sales.data_manager.read_table_from_file(sales.DATAFILE))
 
 
 def update_transaction():

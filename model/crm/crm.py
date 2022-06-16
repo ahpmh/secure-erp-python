@@ -40,22 +40,17 @@ def update_customer(id_input, new_infos):
             new_infos.insert(0, data[0])
             data = new_infos
         updated_data.append(data)
-    print(updated_data)
     data_manager.write_table_to_file(DATAFILE, updated_data)
-    return updated_data
 
 
 def delete_customer(id_input):
     datas = data_manager.read_table_from_file(DATAFILE)
+    counter = 0
     for data in datas:
         if data[0] == id_input:
-            del data
-        print(data)
-    data_manager.write_table_to_file(DATAFILE)
-
-
-#delete_customer('t66!p_ZAfk')
-        
+            datas.pop(counter)
+        counter += 1
+    data_manager.write_table_to_file(DATAFILE, datas)      
 
 
 def get_subscribed_emails():

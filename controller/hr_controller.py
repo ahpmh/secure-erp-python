@@ -4,7 +4,7 @@ from view import terminal as view
 
 
 def list_employees():
-    data = hr.list_employes()
+    data = hr.list_of_employees()
     view.print_table(data)
 
 
