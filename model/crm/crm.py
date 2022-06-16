@@ -19,7 +19,6 @@ HEADERS = ["ID", "NAME", "EMAIL", "SUBSCRIBED"]
 
 def list_customers():
     data = data_manager.read_table_from_file(DATAFILE)
-    print(data)
     data.insert(0, HEADERS)
     return data
 
@@ -40,28 +39,23 @@ def update_customer(id_input, new_infos):
             new_infos.insert(0, data[0])
             data = new_infos
         updated_data.append(data)
-    print(updated_data)
     data_manager.write_table_to_file(DATAFILE, updated_data)
-    return updated_data
 
 
 def delete_customer(id_input):
     datas = data_manager.read_table_from_file(DATAFILE)
+    counter = 0
     for data in datas:
         if data[0] == id_input:
-            del data
-        print(data)
-    data_manager.write_table_to_file(DATAFILE)
-# delete_customer('t66!p_ZAfk') EZ MEG NEM MUKODIK
+            datas.pop(counter)
+        counter += 1
+    data_manager.write_table_to_file(DATAFILE, datas)  
 
 
 def get_subscribed_emails():
-    # data = data_manager.read_table_from_file(DATAFILE)
-    # view.print_general_results(result, label)
-    # subscribedMail = []
-    # for i in data:
-    #     if i[-1] == 1:
-    #         subscribedMail += i[-2]
-    # return subscribedMail
-    # data = data_manager.read_table_from_file(DATAFILE)
-    pass
+    data = data_manager.read_table_from_file(DATAFILE)
+    subscribedMail = []
+    for i in data:
+        if i[-1] == "1":
+            subscribedMail.append(i[-2])
+    return subscribedMail

@@ -9,6 +9,7 @@ Melyik szerint csináljuk? -> a fileban lévőt használjuk. '''
 
 
 def list_customers():
+    data = crm.list_customers()
     view.print_table(data)
 
 
@@ -30,7 +31,8 @@ def update_customer():
             if data[0] == id_form_user:
                 new_infos = view.get_inputs(headers_without_id)
                 crm.update_customer(id_form_user, new_infos)
-                view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
+                view.print_table(
+                    crm.data_manager.read_table_from_file(crm.DATAFILE))
     else:
         view.print_message(
             'There are no customer with this ID. If you want to add a new customer please select add customer option.')
@@ -38,14 +40,16 @@ def update_customer():
 
 def delete_customer():
     header = crm.HEADERS[:1]
-    user_id = view. get_input(header)
-    deleted_data = crm.delete_customer(user_id)
-    view.print_table(deleted_data)
+    user_id = view. get_input(''.join(header))
+    crm.delete_customer(user_id)
+    view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
 
 
 def get_subscribed_emails():
-    subscribedMail = get_subscribed_emails()
+    subscribedMail = crm.get_subscribed_emails()
+    print(subscribedMail)
     view.print_general_results(subscribedMail, "Subscribed customers are: ")
+    
 #  Get the emails of subscribed customers.
 
 

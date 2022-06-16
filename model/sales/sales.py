@@ -9,6 +9,7 @@ Data table structure:
 """
 
 from model import data_manager, util
+import datetime
 
 DATAFILE = "model/sales/sales.csv"
 HEADERS = ["ID", "CUSTOMER", "PRODUCT", "PRICE", "DATE"]
@@ -20,34 +21,13 @@ def get_data_from_file():
     return data
 
 
-def write_to_file(plus_data):
-    plus_data.pop(0)
-    data_manager.write_table_to_file(DATAFILE, plus_data)
+def add_tranzaction(new_info):
+    data = data_manager.read_table_from_file(DATAFILE)
+    new_id = util.generate_id()
+    new_info.insert(0, new_id)
+    new_data = data + [new_info]
+    data_manager.write_table_to_file(DATAFILE, new_data)
 
-
-def get_id():
-    id = util.generate_id()
-    return id
-
-
-def add_transaction():
-    data = get_data_from_file()
-    new_transaction = []
-    id = get_id()
-    custumer_id = get_id()
-    product = input("Please type the product name: ")
-    date_time = input('Please type the transaction date (YYYY-MM-DD): ')
-    price = input('Please type the price: ')
-
-    new_transaction.append(id)
-    new_transaction.append(custumer_id)
-    new_transaction.append(product)
-    new_transaction.append(price)
-    new_transaction.append(date_time)
-
-    data.append(new_transaction)
-
-    write_to_file(data)
 
 def get_biggest_revenue_transaction():
     data = get_data_from_file()
@@ -72,3 +52,18 @@ def get_biggest_revenue_product():
         if produce_price > biggest_revenue[1]:
             biggest_revenue = (produce_name, produce_price)
     return biggest_revenue
+
+def count_transactions_between(from_date, to_date):
+    data = get_data_from_file()
+    data.pop(0)
+    counter = 0
+    for element in data:
+        transaction_date = datetime.date.fromisoformat(element[4])
+        if from_date < transaction_date < to_date:
+            counter += 1
+    return counter
+
+
+
+        
+
