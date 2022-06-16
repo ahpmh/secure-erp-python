@@ -1,5 +1,10 @@
 from model.hr import hr
 from view import terminal as view
+import os
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def list_employees():
@@ -107,3 +112,4 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+    clear()

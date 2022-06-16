@@ -1,11 +1,16 @@
 from model.crm import crm
 from view import terminal as view
+import os
 
 '''  a view-t csak a controller hívja meg, azzal amit a model return-öl
  pl view.print_table(amit a modell returnol és a controller hívja meg)'''
 
 # itt lent run operation-ben és a feladatleírásban az 1 és 2 menüpont fel van cserélve.
 # Melyik szerint csináljuk? -> a fileban lévőt használjuk.
+
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def list_customers():
@@ -48,7 +53,8 @@ def delete_customer():
 def get_subscribed_emails():  # Get the emails of subscribed customers.
     empty_row = "\n"
     subscribedMail = crm.get_subscribed_emails()
-    view.print_general_results(subscribedMail, f"{empty_row}Email address of subscribed customer(s):{empty_row}")
+    view.print_general_results(
+        subscribedMail, f"{empty_row}Email address of subscribed customer(s):{empty_row}")
 
 
 def run_operation(option):
@@ -87,3 +93,4 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+    clear()
