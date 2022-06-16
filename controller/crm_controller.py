@@ -18,7 +18,6 @@ def add_customer():
     new_infos = view.get_inputs(headers)
     added_customer = crm.add_customer(new_infos)
     view.print_table(added_customer)
-    
 
 
 def update_customer():
@@ -28,7 +27,6 @@ def update_customer():
     new_infos = view.get_inputs(headers_without_id)
     updated_data = crm.update_customer(id_form_user, new_infos)
     view.print_table(updated_data)
-
 
 
 def delete_customer():

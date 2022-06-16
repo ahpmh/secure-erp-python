@@ -36,6 +36,7 @@ def add_customer(new_info):
     data.insert(0, new_ID)
     return new_cust'''
 
+
 def update_customer(id_input, new_infos):
     datas = data_manager.read_table_from_file(DATAFILE)
     nemtom = [data[0] for data in datas]

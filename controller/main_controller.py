@@ -1,10 +1,5 @@
 from view import terminal as view
 from controller import crm_controller, sales_controller, hr_controller
-import os
-
-
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def load_module(option):
@@ -42,5 +37,5 @@ def menu():
         except ValueError:
             view.print_error_message("Please enter a number!")      # error msg
         if option == 0:
-            view.print_message("Good-bye!")                                 # msg
+            view.print_message("Good-bye!")                         # msg
             return
