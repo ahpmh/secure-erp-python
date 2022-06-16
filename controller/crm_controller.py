@@ -9,34 +9,43 @@ Melyik szerint csináljuk? -> a fileban lévőt használjuk. '''
 
 
 def list_customers():
-    data = crm.list_customers()
     view.print_table(data)
 
 
 def add_customer():
     headers = crm.HEADERS[1:]
     new_infos = view.get_inputs(headers)
-    added_customer = crm.add_customer(new_infos)
-    view.print_table(added_customer)
+    crm.add_customer(new_infos)
+    view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
 
 
 def update_customer():
+    datas = crm.data_manager.read_table_from_file(crm.DATAFILE)
     header_for_id = crm.HEADERS[:1]
     headers_without_id = crm.HEADERS[1:]
     id_form_user = view.get_input(''.join(header_for_id))
-    new_infos = view.get_inputs(headers_without_id)
-    updated_data = crm.update_customer(id_form_user, new_infos)
-    view.print_table(updated_data)
+    IDs = [data[0] for data in datas]
+    if id_form_user in IDs:
+        for data in datas:
+            if data[0] == id_form_user:
+                new_infos = view.get_inputs(headers_without_id)
+                crm.update_customer(id_form_user, new_infos)
+                view.print_table(crm.data_manager.read_table_from_file(crm.DATAFILE))
+    else:
+        view.print_message(
+            'There are no customer with this ID. If you want to add a new customer please select add customer option.')
 
 
 def delete_customer():
-    view.print_error_message("Not implemented yet.")
-#  option 4 asks the user for the ID of a customer.
-# If the ID belongs to an existing customer, the customer is deleted from the database.
+    header = crm.HEADERS[:1]
+    user_id = view. get_input(header)
+    deleted_data = crm.delete_customer(user_id)
+    view.print_table(deleted_data)
 
 
 def get_subscribed_emails():
-    view.print_error_message("Not implemented yet.")
+    subscribedMail = get_subscribed_emails()
+    view.print_general_results(subscribedMail, "Subscribed customers are: ")
 #  Get the emails of subscribed customers.
 
 
@@ -76,7 +85,3 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
-
-
-if __name__ == '__main__':
-    main()

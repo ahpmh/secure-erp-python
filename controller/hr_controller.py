@@ -1,4 +1,3 @@
-from model.crm.crm import HEADERS
 from model.hr import hr
 from view import terminal as view
 

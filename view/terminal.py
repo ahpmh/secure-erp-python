@@ -1,14 +1,11 @@
-import os
-
-
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
 def print_menu(title, list_options):
     title = title.upper()
+    bold = "\033[1m"
+    yellow = '\033[93m'
+    end = '\033[0m'
+    title = bold + title.upper() + end
     print("\n\n")
-    print(title.center(95))
+    print(yellow, title.center(100), end)
     print()
     counter = 0
     for option in list_options:
@@ -21,7 +18,7 @@ def print_message(message):
 
 
 def print_general_results(result, label):
-    if isinstance(result, (int) ):
+    if isinstance(result, (int)):
         print(f'{label}: {result}')
     elif isinstance(result, (float)):
         two_decimal_float = round(result, 2)
@@ -48,10 +45,10 @@ def print_table(table):
     column_width = max(length_list)
     separator_between_rows = (len(table[0])*(column_width + 5)) * '-'
     for row in table:
-        print(separator_between_rows.rjust(100))
+        print(separator_between_rows)
         row = " | ".join(element.center(column_width + 2) for element in row)
-        print(row.rjust(98))
-    print(separator_between_rows.rjust(100))
+        print(row)
+    print(separator_between_rows)
 
 
 """Prints tabular data like above.
@@ -67,7 +64,6 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-
     inp = input(f"{label}: ")
     return inp
 
@@ -78,7 +74,6 @@ def get_inputs(labels):
         get_lable = input(label + ': ')
         new_data.append(get_lable)
     return new_data
-
 
 
 def print_error_message(message):
