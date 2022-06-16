@@ -1,12 +1,4 @@
-""" Human resources (HR) module
 
-Data table structure:
-    - id (string)
-    - name (string)
-    - birth date (string): in ISO 8601 format (like 1989-03-21)
-    - department (string)
-    - clearance level (int): from 0 (lowest) to 7 (highest)
-"""
 from datetime import date
 from datetime import datetime
 from model import data_manager, util
@@ -75,8 +67,17 @@ def list_of_employees():
     return data
 
 
-def average_age(birth_date):
-    
+def average_age():
+    data = data_manager.read_table_from_file(DATAFILE, separator=';')
+    years = 0
+    counter = 0
+    for employee in data:
+        counter+=1
+        employee_year = (employee[2])
+        employee_year = int(employee_year[0:4]) 
+        years += (2022 - employee_year) 
+    average = round(years/counter)
+    return average
     
 
 
@@ -84,7 +85,7 @@ def birthdays_next():
     pass
 
 
-def count_employees_clearance_from_input():
+def count_employees_with_clearence_from_input():
     pass
 
 
