@@ -15,11 +15,26 @@ def add_transaction():
 
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
+    datas = sales.data_manager.read_table_from_file(sales.DATAFILE)
+    header_for_id = sales.HEADERS[:1]
+    headers_without_id = sales.HEADERS[1:]
+    id_form_user = view.get_input(''.join(header_for_id))
+    IDs = [data[0] for data in datas]
+    if id_form_user in IDs:
+        for data in datas:
+            if data[0] == id_form_user:  
+                new_infos = view.get_inputs(headers_without_id)
+                sales.updating_employee(id_form_user, new_infos)
+                view.print_table(sales.data_manager.read_table_from_file(sales.DATAFILE))
+    else:
+        view.print_message('There are no customer with this ID. If you want to add a new customer please select add customer option.')
 
 
 def delete_transaction():
-    view.print_error_message("Not implemented yet.")
+    header = sales.HEADERS[:1]
+    user_id = view. get_input(''.join(header))
+    sales.delete_customer(user_id)
+    view.print_table(sales.data_manager.read_table_from_file(sales.DATAFILE))
 
 
 def get_biggest_revenue_transaction():
