@@ -57,3 +57,18 @@ def get_biggest_revenue_transaction():
         if float(transaction[3]) > float(biggest_transaction[3]):
             biggest_transaction = transaction
     return biggest_transaction
+
+def get_biggest_revenue_product():
+    data = get_data_from_file()
+    data.pop(0)
+    items = {}
+    biggest_revenue = ("empty", 0)
+    for element in data:
+        if element[2] in items.keys():
+            items[element[2]] += float(element[3])
+        else:
+            items.update({element[2]: float(element[3])})
+    for produce_name, produce_price in items.items():
+        if produce_price > biggest_revenue[1]:
+            biggest_revenue = (produce_name, produce_price)
+    return biggest_revenue

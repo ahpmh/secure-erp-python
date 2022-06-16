@@ -19,6 +19,7 @@ HEADERS = ["ID", "NAME", "EMAIL", "SUBSCRIBED"]
 
 def list_customers():
     data = data_manager.read_table_from_file(DATAFILE)
+    print(data)
     data.insert(0, HEADERS)
     return data
 
@@ -29,34 +30,32 @@ def add_customer(new_info):
     new_info.insert(0, new_id)
     new_data = data + [new_info]
     data_manager.write_table_to_file(DATAFILE, new_data)
-    return new_data
 
-    '''new_cust = data.append
-    new_ID = util.generate_id()
-    data.insert(0, new_ID)
-    return new_cust'''
 
 def update_customer(id_input, new_infos):
     datas = data_manager.read_table_from_file(DATAFILE)
-    nemtom = [data[0] for data in datas]
     updated_data = []
-    if id_input in nemtom:
-        for data in datas:
-            if data[0] == id_input:
-                new_infos.insert(0, data[0])
-                data = new_infos
-            updated_data.append(data)
-    else:
-        print('There are no customer with that ID.')
+    for data in datas:
+        if data[0] == id_input:
+            new_infos.insert(0, data[0])
+            data = new_infos
+        updated_data.append(data)
+    print(updated_data)
     data_manager.write_table_to_file(DATAFILE, updated_data)
     return updated_data
 
 
-def delete_customer():
-    # data = data_manager.read_table_from_file(DATAFILE)
-    # # del data(ahol találta sor)
-    # data_manager.write_table_to_file(DATAFILE, data)
-    pass
+def delete_customer(id_input):
+    datas = data_manager.read_table_from_file(DATAFILE)
+    for data in datas:
+        if data[0] == id_input:
+            del data
+        print(data)
+    data_manager.write_table_to_file(DATAFILE)
+
+
+#delete_customer('t66!p_ZAfk')
+        
 
 
 def get_subscribed_emails():
