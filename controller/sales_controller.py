@@ -27,7 +27,8 @@ def get_biggest_revenue_product():
 
 
 def count_transactions_between():
-    view.print_general_results(sales.count_transactions_between(), 'Number of transactions:')
+    dates = view.get_inputs(['Type the start date: ', 'Type the end date: '])
+    view.print_general_results(sales.count_transactions_between(dates[0], dates[1]), 'The number of transactions:')
 
 
 def sum_transactions_between():
