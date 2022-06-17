@@ -64,7 +64,7 @@ def count_employees_with_clearance():
 
 
 def count_employees_per_department():
-    view.print_error_message("Not implemented yet.")
+    view.print_general_results(hr.get_number_of_employees_per_department(), 'Number of employees per dept:')
 
 
 def run_operation(option):

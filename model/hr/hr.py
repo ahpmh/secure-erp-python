@@ -1,5 +1,7 @@
 from datetime import datetime
 from model import data_manager, util
+from collections import Counter
+
 
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["ID", "NAME", "DATE OF BIRTH", "DEPARTMENT", "CLEARANCE"]
@@ -90,4 +92,9 @@ def count_employees_clearance_from_input(data_from_cust):
 
 
 def get_number_of_employees_per_department():
-    pass
+    data = data_manager.read_table_from_file(DATAFILE)
+    departments = []
+    for data_per_cust in data:
+        departments.append(data_per_cust[-2])  # lista = hr, vmi, hr, sales
+    result = dict(Counter(departments))
+    return result

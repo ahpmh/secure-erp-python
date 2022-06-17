@@ -26,11 +26,11 @@ def print_general_results(result, label):
     elif isinstance(result, (list, tuple)):
         print(f'{label}')
         for item in result:
-            print(item, end='; ')
+            print(item, end=';')
     elif isinstance(result, (dict)):
         print(f'{label}')
         for key, value in result.items():
-            print(f'{key}; {value}', end='; ')
+            print(f'{key}: {value}', end='; ')
 
 
 # /--------------------------------\
