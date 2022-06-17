@@ -67,15 +67,12 @@ def list_of_employees():
 
 def average_age():
     data = data_manager.read_table_from_file(DATAFILE, separator=';')
-    years = 0
-    counter = 0
+    ages = []
     for employee in data:
-        counter += 1
-        employee_year = (employee[2])
-        employee_year = int(employee_year[0:4])
-        years += (2022 - employee_year)
-    average = round(years/counter)
-    return average
+        birth_date = datetime.strptime(employee[2], '%Y-%m-%d')
+        age = (datetime.now() - birth_date).days / 365.25
+        ages.append(age)
+    return sum(ages) / len(ages)
 
 
 def birthdays_next():

@@ -16,6 +16,8 @@ from model import data_manager, util
 DATAFILE = "model/crm/crm.csv"
 HEADERS = ["ID", "NAME", "EMAIL", "SUBSCRIBED"]
 
+SUBSCRIBED_COL_ID = 3
+
 
 def list_customers():
     data = data_manager.read_table_from_file(DATAFILE)
@@ -43,23 +45,21 @@ def update_customer(id_input, new_infos):
 
 
 def delete_customer(id_input):
-    datas = data_manager.read_table_from_file(DATAFILE)
-    counter = 0
-    for data in datas:
-        if data[0] == id_input:
-            datas.pop(counter)
-        counter += 1
-    data_manager.write_table_to_file(DATAFILE, datas)
+    data = data_manager.read_table_from_file(DATAFILE)
+    for i, customer in enumerate(data):
+        if customer[0] == id_input:
+            data.pop(i)
+    data_manager.write_table_to_file(DATAFILE, data)
 
 
 def get_subscribed_emails():
     data = data_manager.read_table_from_file(DATAFILE)
-    subscribedMail = []
+    subscribed_mail = []
     for element_of_subscribed_mails in data:
-        if element_of_subscribed_mails[-1] == "1":
+        if element_of_subscribed_mails[SUBSCRIBED_COL_ID] == "1":
             # element_of_subscribed_mails[-2] = str(element_of_subscribed_mails[-2]).rstrip(";")
-            subscribedMail.append(element_of_subscribed_mails[-2])
-    if subscribedMail == []:
+            subscribed_mail.append(element_of_subscribed_mails[-2])
+    if subscribed_mail == []:
         print(" ------ There is no subscribed customer YET------ ")
     else:
-        return subscribedMail
+        return subscribed_mail

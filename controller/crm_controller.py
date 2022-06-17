@@ -30,8 +30,8 @@ def update_customer():
     header_for_id = crm.HEADERS[:1]
     headers_without_id = crm.HEADERS[1:]
     id_form_user = view.get_input(''.join(header_for_id))
-    IDs = [data[0] for data in datas]
-    if id_form_user in IDs:
+    ids = [data[0] for data in datas]
+    if id_form_user in ids:
         for data in datas:
             if data[0] == id_form_user:
                 new_infos = view.get_inputs(headers_without_id)
